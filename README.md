@@ -1,6 +1,9 @@
 
 # api_quiz
-Вопросы викторины (на английском)
+Вопросы викторины (на английском)  
+
+Запрашивает вопросы с https://jservice.io/api/random?count=1, сохраняет в бд.
+Данные бд хранятся на docker volume
 
 ## Технологии
 - Python 3.11
@@ -16,12 +19,16 @@
 $ git clone https://github.com/GitHub-NikName/quiz.git
 $ cd quiz
 ```
+- Скопировать и изменить настройки в .env
+```bash
+cp .env.exp .exp
+````
 
 ```bash
 $ docker-compose up -d --build
 $ docker-compose exec web python manage.py migrate --noinput
 ````
-данные бд хранятся на docker volume
+перезапустить.  
 
 ## Пример запроса
 
