@@ -7,22 +7,22 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
-    volumes:
-      - ./quiz:/opt/project
+#    volumes:
+#      - ./quiz:/opt/project
     ports:
       - "8000:8000"
     env_file:
       - ./.env
+    tty: True
 
   db:
     image: postgres:15.3-alpine3.18
     container_name: quiz-db
     ports:
-      - 5432:5432
+      - "5432:5432"
     restart: always
     volumes:
       - quiz-db:/var/lib/postgresql/data
-#      - ./replica_user.sql:/docker-entrypoint-initdb.d/replica_user.sql
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
